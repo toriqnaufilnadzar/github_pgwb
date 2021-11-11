@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProdukController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,6 @@ Route::get('/', function () {
 Route::get('2', function () {
     return view('index2');
 });
+
+// Route::view('/produk', 'produk.produk');
+Route::get('/produk', [ProdukController::class, 'index']);
