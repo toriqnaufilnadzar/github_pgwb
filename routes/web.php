@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +15,14 @@ use App\Http\Controllers\ProdukController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
 Route::get('2', function () {
     return view('index2');
 });
 
-// Route::view('/produk', 'produk.produk');
-Route::get('/produk', [ProdukController::class, 'index']);
+
+Route::get('/', [ProductController::class, 'index'])->name('category');
+Route::get('/produk/tambah', [ProductController::class, 'create'])->name('tambahProduk');
+Route::get('/produk/delete/{id}', [ProductController::class, 'destroy'])->name('hapusProduk');

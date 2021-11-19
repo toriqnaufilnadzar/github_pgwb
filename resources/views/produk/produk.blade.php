@@ -1,25 +1,32 @@
 @extends('layout/main')
 @section('content')
-        <!-- $table->string('nama_produk');
-            $table->text('diskripsi');
-            $table->integer('harga');
-            $table->integer('jumlah'); -->
-            <div class="content-wrapper">
-                <table>
-                    <tr>
-                        <td>Id</td>
-                        <td>Nama Produk</td>
-                        <td>diskripsi</td>
-                        <td>harga</td>
-                        <td>jumlah</td>
-                    </tr>
-                    <tr>
-                        <td>Id</td>
-                        <td>Nama Produk</td>
-                        <td>diskripsi</td>
-                        <td>harga</td>
-                        <td>jumlah</td>
-                    </tr>
-                </table>
-            </div>
+      
+<div class="content-wrapper">
+<table class="table">
+  <thead>    
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">Nama Produk</th>
+      <th scope="col">deskripsi produk</th>
+      <th scope="col">harga</th>
+      <th scope="col">jumlah</th>
+      <th scope="col">edit</th>
+    </tr>
+  </thead>
+  <tbody>
+      <?php $no = 1; ?>
+      @foreach($getProduct as $item)
+    <tr>
+      <td>{{ $no++ }}</td>     
+      <td>{{ $item->nama_produk }}</td>     
+      <td>{{ $item->diskripsi }}</td>     
+      <td>{{ $item->jumlah }}</td>     
+      <td>{{ $item->harga }}</td>     
+      <td><a href="{{ route('hapusProduk', $item->id) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a></td>             
+    </tr>
+    @endforeach
+  </tbody>
+</table>
+</div>
+
 @endsection
